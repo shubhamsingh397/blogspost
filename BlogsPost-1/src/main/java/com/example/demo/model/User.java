@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity(name = "user1")
 public class User {
 
@@ -18,6 +19,7 @@ public class User {
 	private long userId;
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
+	@JsonIgnore
 	private String password;
 	private String username;
 	private String name;
