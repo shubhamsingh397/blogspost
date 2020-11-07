@@ -11,5 +11,5 @@ import com.example.demo.model.User;
 public interface AuthenticationDao extends JpaRepository<User, Long> {
 
 	@Query
-	public User findByUsername(String username);
+	public User findByUserName(String username);
 }
