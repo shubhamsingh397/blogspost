@@ -3,6 +3,7 @@ package com.example.demo.security.controller;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -75,10 +76,11 @@ public class JwtAuthenticationController {
 	
 	
 	@PostMapping("/add_user")
-	public void addUser(@RequestBody User user)
+	public ResponseEntity<User> addUser(@RequestBody User user)
 	{
 		String pass = encoder.encode(user.getPassword());
 		user.setPassword(pass);;
-		authenticationDao.save(user);
+		User user2 = authenticationDao.save(user);
+		return ResponseEntity.status(HttpStatus.OK).body(user2);
 	}
 }

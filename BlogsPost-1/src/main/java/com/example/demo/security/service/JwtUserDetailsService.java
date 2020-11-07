@@ -22,9 +22,9 @@ public class JwtUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
-		if (authenticationDao.findByUsername(username).getUsername().equals(username))
+		if (authenticationDao.findByUsername(username).getUserName().equals(username))
 		{
-			return new User(authenticationDao.findByUsername(username).getUsername(), authenticationDao.findByUsername(username).getPassword(),
+			return new User(authenticationDao.findByUsername(username).getUserName(), authenticationDao.findByUsername(username).getPassword(),
 							new ArrayList<>());
 		} 
 		else

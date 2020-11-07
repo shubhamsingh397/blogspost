@@ -39,7 +39,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<Post> getAllUserPost(String userName) {
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		List<Post> posts = postRepo.findByUser(user);
 		return posts;
 	}
@@ -47,7 +47,7 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public Post getPost(String userName, Long postId) {
 		
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		if(user!=null)
 			return postRepo.findById(postId).get();
 		else return null;
@@ -58,7 +58,7 @@ public class PostServiceImpl implements PostService {
 	public Post createPost(Post post, String userName) {
 		
 		
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		if (user != null) {
 			post.setCreateDate(new Date());
 			post.setUser(user);
@@ -79,7 +79,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public Post updatePost(Post post, String userName) {
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		if(user != null)
 		{
 			Post existingPost = postRepo.findByPostTitle(post.getPostTitle());
@@ -106,7 +106,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public boolean deletePost(String userName, Long postId) {
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		if(user!=null)
 		{
 			postRepo.deleteById(postId);

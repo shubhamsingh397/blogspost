@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 public class Post {
@@ -24,13 +22,13 @@ public class Post {
 	private long postId;
 
 	private String postTitle;
-	
+	private String postSubtitle;
 	@Column(name = "body", columnDefinition = "TEXT")
 	private String body;
 	
 	@ManyToOne
 	
-	@JsonIgnore
+	
 	private User user;
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
@@ -46,6 +44,13 @@ public class Post {
 	}
 	public void setImages(Collection<Image> images) {
 		this.images = images;
+	}
+	
+	public String getPostSubtitle() {
+		return postSubtitle;
+	}
+	public void setPostSubtitle(String postSubtitle) {
+		this.postSubtitle = postSubtitle;
 	}
 	public long getPostId() {
 		return postId;

@@ -10,8 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-@Entity(name = "user1")
+@Entity
 public class User {
 
 	@Id
@@ -19,10 +18,12 @@ public class User {
 	private long userId;
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
-	@JsonIgnore
+	
 	private String password;
-	private String username;
-	private String name;
+	private String userName;
+	private String firstName;
+	private String lastName;
+	private String profilePicUrl;
 	private int isActive;
 	
 	
@@ -38,6 +39,32 @@ public class User {
 
 	public void setUserId(long userId) {
 		this.userId = userId;
+	}
+	
+
+	
+	public String getProfilePicUrl() {
+		return profilePicUrl;
+	}
+
+	public void setProfilePicUrl(String profilePicUrl) {
+		this.profilePicUrl = profilePicUrl;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -56,24 +83,20 @@ public class User {
 		this.password = password;
 	}
 
-	public String getUsername() {
-		return username;
-	}
+	
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	public int getIsActive() {
 		return isActive;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public void setIsActive(int isActive) {
@@ -88,11 +111,7 @@ public class User {
 		this.posts = posts;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", password=" + password + ", username=" + username
-				+ ", name=" + name + ", isActive=" + isActive + ", posts=" + posts + "]";
-	}
+	
 	
 	 
 }

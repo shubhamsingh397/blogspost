@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User getUser(String userName) {
-		return userRepo.findByUsername(userName);
+		return userRepo.findByUserName(userName);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean deleteUser(String userName) {
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		if(user != null)
 		{
 			userRepo.delete(user);

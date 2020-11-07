@@ -30,7 +30,7 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public Comment addComment(Comment comment, Long postId, String userName) {
 		Post post = postRepo.findById(postId).get();
-		User user = userRepo.findByUsername(userName);
+		User user = userRepo.findByUserName(userName);
 		comments.add(comment);
 		post.setComments(comments);
 		comment.setPost(post);
