@@ -29,7 +29,7 @@ import com.example.demo.security.model.JwtResponse;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="*")
 public class JwtAuthenticationController {
 
 	@Autowired
